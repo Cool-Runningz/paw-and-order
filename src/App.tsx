@@ -1,14 +1,14 @@
 import { useGameStore } from "./store/useGameStore";
 import './App.css'
 import  SplashScreen from './screens/SplashScreen'
-import RoundScene from './screens/RoundScene'
+import Scene from './screens/Scene'
 
 function App() {
    const status = useGameStore((state) => state.status)
 
   return (
     <div className="w-full min-h-screen bg-gray-900">
-      {status === 'START' ? <SplashScreen  /> : <RoundScene />}
+      {status === 'START' ? <SplashScreen  /> : <Scene />}
     </div>
   )
 }

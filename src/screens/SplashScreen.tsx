@@ -1,8 +1,9 @@
 import { LuPawPrint } from "react-icons/lu";
-interface SplashScreenProps {
-  onStartGame: () => void
-}
-export function SplashScreen({ onStartGame }: SplashScreenProps) {
+import { useGameStore } from "../store/useGameStore";
+
+export function SplashScreen() {
+  const setStatus = useGameStore((state) => state.setStatus)
+  
   return (
     <div className="relative w-full min-h-screen bg-gradient-to-b from-[#A4D4D4] to-[#C889B5] flex flex-col items-center justify-start pt-12 px-4 overflow-hidden font-mono">
       {/* Background pattern */}
@@ -98,7 +99,7 @@ export function SplashScreen({ onStartGame }: SplashScreenProps) {
       </div>
       {/* Start Button */}
       <button
-        onClick={onStartGame}
+        onClick={() => setStatus('PLAYING')}
         className="whimsical-button cursor-pointer bg-[#744B93] hover:bg-[#5d3c76] text-white font-bold py-4 px-8 text-xl transform transition-transform hover:scale-105 flex items-center z-10"
       >
         <LuPawPrint size={24} className="mr-2" />

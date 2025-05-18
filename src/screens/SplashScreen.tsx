@@ -1,7 +1,7 @@
 import { LuPawPrint } from "react-icons/lu";
 import { useGameStore } from "../store/useGameStore";
 
-export function SplashScreen() {
+export default function SplashScreen() {
   const setStatus = useGameStore((state) => state.setStatus)
   
   return (

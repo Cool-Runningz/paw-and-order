@@ -16,4 +16,17 @@ export type GameStore = {
     currentRoomId: Room['id'];
     setStatus: (status: Status) => void;
     setRoomId: (id: Room['id']) => void;
+    cats: Cat[]
+    setCats: (cats: Cat[]) => void;
 }
+
+export type Cat = {
+    id: string;
+    name: string;
+      weight: number;
+      agility: number;
+      breed: string;
+      size: string;
+    alibi: string;
+    imgSrc: string;
+  };

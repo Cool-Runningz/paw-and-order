@@ -7,8 +7,16 @@ export type Room = {
 }
 
 export type Scene = {
-    caseName: string
     roomId: Room['id']
+    guiltyCatId: string;
+    shenanigan: Shenanigan;
+}
+
+export type Shenanigan = {
+  id: string
+  roomId: Room['id']
+  description: string
+  caseName: string
 }
 
 export type GameStore = {

@@ -27,6 +27,10 @@ export type GameStore = {
     setRoomId: (id: Room['id']) => void;
     cats: Cat[]
     setCats: (cats: Cat[]) => void;
+    scenes: Scene[];
+    setScenes: (scenes: Scene[]) => void;
+    startGame: () => void;
+    score: number;
 }
 
 export type Cat = {

@@ -14,7 +14,7 @@ const cats: Cat[] = [
     },
     "breed": "tabby",
     "alibi": "Napping on the windowsill",
-    "imgSrc": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80",
+    "imgSrc": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400&q=80",
 
   },
   {
@@ -30,7 +30,7 @@ const cats: Cat[] = [
     "ageGroup": "adult"
     },
     "alibi": "Chasing a fly in the kitchen",
-    "imgSrc": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80",
+    "imgSrc": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400&q=80",
   },
   {
     "id": "cat3",
@@ -45,7 +45,7 @@ const cats: Cat[] = [
     "ageGroup": "adult"
      },
     "alibi": "Knocked over the plant pot",
-     "imgSrc": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80",
+     "imgSrc": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400&q=80",
   },
   {
     "id": "cat4",
@@ -60,7 +60,7 @@ const cats: Cat[] = [
     "ageGroup": "adult"
     },
     "alibi": "Stuck in the laundry basket",
-    "imgSrc": 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80',
+    "imgSrc": 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400&q=80',
   },
   {
     "id": "cat5",
@@ -75,7 +75,7 @@ const cats: Cat[] = [
     "ageGroup": "adult"
     },
     "alibi": "Watching birds outside",
-        "imgSrc": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80",
+        "imgSrc": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400&q=80",
   },
    {
     "id": "cat6",
@@ -90,7 +90,7 @@ const cats: Cat[] = [
     "ageGroup": "senior"
     },
     "alibi": "Sleeping under the couch",
-        "imgSrc": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80",
+        "imgSrc": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400&q=80",
   },
   {
     "id": "cat7",
@@ -105,7 +105,7 @@ const cats: Cat[] = [
     "ageGroup": "senior"
     },
     "alibi": "Sitting by the fireplace",
-    "imgSrc": 'https://images.unsplash.com/photo-1559235038-1b0fadf76f78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80',
+    "imgSrc": 'https://images.unsplash.com/photo-1559235038-1b0fadf76f78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400&q=80',
   },
   {
     "id": "cat8",
@@ -120,7 +120,7 @@ const cats: Cat[] = [
     "ageGroup": "kitten"
     },
     "alibi": "Playing with yarn",
-    "imgSrc": 'https://images.unsplash.com/photo-1559235038-1b0fadf76f78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80', 
+    "imgSrc": 'https://images.unsplash.com/photo-1559235038-1b0fadf76f78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400&q=80', 
   },
   {
     "id": "cat9",

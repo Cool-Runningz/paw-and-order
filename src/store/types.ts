@@ -17,6 +17,7 @@ export type Shenanigan = {
   roomId: Room['id']
   description: string
   caseName: string
+  requiredTraits?: Partial<Cat['stats']>;
 }
 
 export type GameStore = {
@@ -31,10 +32,15 @@ export type GameStore = {
 export type Cat = {
     id: string;
     name: string;
-      weight: number;
-      agility: number;
-      breed: string;
-      size: string;
+    breed: string;
+    stats: {
+         personality: 'curious' | 'timid' | 'bold' | 'lazy' | 'mischievous';
+        weight: number;
+        agility: number;
+        activityLevel: 'low' | 'medium' | 'high';
+        ageGroup: 'kitten' | 'adult' | 'senior';
+        size: 'small' | 'medium' | 'large';
+    };
     alibi: string;
     imgSrc: string;
-  };
+};

@@ -20,7 +20,55 @@ export function generateRound(cats: Cat[]): Scene[] {
       return count < 2;
     });
 
-    const guiltyCat = shuffle(eligibleCats)[0];
+    // Bias guilty cat selection toward those matching requiredTraits, if present
+    //console.log('shenanigan: ', shenanigan)
+    let matchingCats = eligibleCats;
+
+    if (shenanigan.requiredTraits) {
+      const traitWeights: Record<string, number> = {
+        agility: 2,
+        weight: 1,
+        activityLevel: 3,
+        personality: 2,
+        ageGroup: 2,
+        size: 1,
+      };
+
+      // Score each cat based on trait alignment
+      const scoredCats = eligibleCats.map(cat => {
+        let score = 0;
+        for (const [key, required] of Object.entries(shenanigan.requiredTraits!)) {
+          const catValue = cat.stats[key as keyof typeof cat.stats];
+
+          if (typeof required === 'number') {
+            if (typeof catValue === 'number') {
+              const closeness = Math.max(0, catValue - required);
+              score += closeness * (traitWeights[key] ?? 1);
+            }
+          } else {
+            if (catValue === required) {
+              score += traitWeights[key] ?? 1;
+            }
+          }
+        }
+        return { cat, score };
+      });
+
+      // Find highest score and filter cats that share it
+      const maxScore = Math.max(...scoredCats.map(c => c.score));
+      const topScorers = scoredCats.filter(c => c.score === maxScore).map(c => c.cat);
+
+      if(room.name === 'Living Room'){
+      console.groupCollapsed("output")
+      console.log('scoredCats: ', scoredCats)
+      console.log("maxScore: ", maxScore)
+      console.log('topScorers: ', topScorers)
+      console.groupEnd()
+      }
+
+      matchingCats = topScorers.length > 0 ? topScorers : eligibleCats;
+    }
+    const guiltyCat = matchingCats.length > 1 ? shuffle(matchingCats)[0] : matchingCats[0];
     catAssignmentCount.set(
       guiltyCat.id,
       (catAssignmentCount.get(guiltyCat.id) ?? 0) + 1

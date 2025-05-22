@@ -14,7 +14,7 @@ export default function TopBar({title}: TopBarProps) {
 						</span>
 				</div>
 				<div className="flex flex-1 justify-end gap-x-4 md:gap-x-8">
-				   <button className="cursor-pointer"><LuShieldQuestion size={25}/></button>
+				   <button className="cursor-pointer"><span className="sr-only">View game Instructions</span><LuShieldQuestion size={25}/></button>
 				</div>
 			</nav>
 		</header>

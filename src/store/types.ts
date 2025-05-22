@@ -1,3 +1,5 @@
+import type { IconType } from "react-icons";
+
 export type Status = "START" | "PLAYING" | "OVER"
 
 export type Room = {
@@ -18,6 +20,13 @@ export type Shenanigan = {
   description: string
   caseName: string
   requiredTraits?: Partial<Cat['stats']>;
+  clue: Clue
+}
+
+export type Clue = {
+  details: string[]
+  icon: IconType
+  imgSrc: string
 }
 
 export type GameStore = {

@@ -4,18 +4,21 @@ import rooms from '../data/rooms'
 import type { Cat } from "../store/types";
 import CatAvatar from "../components/CatAvatar";
 import { CAT_POSITIONS } from "../utils/constants";
-import Drawer from "../components/Drawer";
+import CatProfileDrawer from "../components/CatProfileDrawer";
+import ClueDrawer from "../components/ClueDrawer";
+import ClueButton from "../components/ClueAvatar";
 import { useState } from "react";
 
 export default function Scene() {
-    const [open, setOpen] = useState(false)
+    const [openCatDrawer, setOpenCatDrawer] = useState(false)
+    const [openClueDrawer, setOpenClueDrawer] = useState(false)
     const [selectedCat, setSelectedCat] = useState<Cat | null>(null)
    const room = useGameStore((state) => rooms.find((s) => s.id === state.currentRoomId)) 
    const currentRoomId = useGameStore((state) => state.currentRoomId)  
    const cats =  useGameStore((state) => state.cats) 
    const scenes = useGameStore((state) => state.scenes)
    const scene = scenes.find(r => r.roomId === room?.id)
-  
+  const Icon = scene?.shenanigan.clue.icon 
 
   console.groupCollapsed("Scene")
   console.log('room: ', room)
@@ -27,7 +30,7 @@ export default function Scene() {
   if (!room) return null; 
 
   const handleAvatarClick = (cat: Cat) => {
-   setOpen(prevState => !prevState) 
+   setOpenCatDrawer(prevState => !prevState) 
    setSelectedCat(cat)
   }
 
@@ -37,7 +40,8 @@ export default function Scene() {
     <div className="min-h-screen h-screen min-w-full bg-cover bg-center relative"
      style={{ backgroundImage: `url(${room.backgroundImg})` }}
     >
-      <Drawer cat={selectedCat} isOpen={open} onClose={() => setOpen(false)}  />   
+      <CatProfileDrawer cat={selectedCat} isOpen={openCatDrawer} onClose={() => setOpenCatDrawer(false)}  />   
+         <ClueDrawer shenanigan={scene?.shenanigan} isOpen={openClueDrawer} onClose={() => setOpenClueDrawer(false)} /> 
     {/**render cats */}
     {cats.map((cat, i) => {
         const position = CAT_POSITIONS[i];
@@ -50,6 +54,11 @@ export default function Scene() {
       </div>
     );
   })}
+   <div className="absolute bottom-4 left-2">
+   <ClueButton onClick={() => setOpenClueDrawer(prevState => !prevState)} >
+    {Icon && <Icon size={75} /> }
+   </ClueButton>
+   </div>
     </div>
     </>
   )

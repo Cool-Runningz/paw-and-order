@@ -61,7 +61,7 @@ export default function SplashScreen() {
             color: '#ECA0B0',
           },
           {
-            title: 'Solve Crimes',
+            title: 'Solve Shenanigans',
             icon: '📋',
             description:
               'Piece together evidence and determine which cat is the culprit.',

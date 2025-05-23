@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import { Divider } from '../components/catalyst/divider'
 import { HiXMark, HiCheckCircle } from 'react-icons/hi2'
 import {Button} from '../components/catalyst/button'

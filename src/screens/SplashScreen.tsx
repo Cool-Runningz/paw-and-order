@@ -104,7 +104,7 @@ export default function SplashScreen() {
           startGame();
           setRoomId('living_room')
         }}
-        className="whimsical-button cursor-pointer bg-[#744B93] hover:bg-[#5d3c76] text-white font-bold py-4 px-8 text-xl transform transition-transform hover:scale-105 flex items-center z-10"
+        className="whimsical-button mb-4 cursor-pointer bg-[#744B93] hover:bg-[#5d3c76] text-white font-bold py-4 px-8 text-xl transform transition-transform hover:scale-105 flex items-center z-10"
       >
         <LuPawPrint size={24} className="mr-2" />
         Start Playing!

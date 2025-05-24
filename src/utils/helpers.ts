@@ -1,6 +1,7 @@
 import shuffle from 'just-shuffle';
 import rooms from '../data/rooms';
 import shenanigans from '../data/shenanigans';
+import cats from '../data/cats';
 import type { Cat, Room, Scene } from '../store/types';
 
 export function generateRound(cats: Cat[]): Scene[] {
@@ -68,7 +69,8 @@ export function generateRound(cats: Cat[]): Scene[] {
 
       matchingCats = topScorers.length > 0 ? topScorers : eligibleCats;
     }
-    const guiltyCat = matchingCats.length > 1 ? shuffle(matchingCats)[0] : matchingCats[0];
+    //const guiltyCat = matchingCats.length > 1 ? shuffle(matchingCats)[0] : matchingCats[0];
+    const guiltyCat =  matchingCats[0];
     catAssignmentCount.set(
       guiltyCat.id,
       (catAssignmentCount.get(guiltyCat.id) ?? 0) + 1
@@ -99,4 +101,8 @@ export function getNextRoomId(roomId: Room['id']): Room['id'] {
   }
 
   return rooms[nextRoomIndex].id
+}
+
+export function getCatDetails(id: Cat['id']): Cat | undefined {
+  return cats.find(cat => cat.id === id)
 }

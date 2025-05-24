@@ -1,12 +1,14 @@
 import {useState} from 'react'
 import { Divider } from '../components/catalyst/divider'
-import { HiXMark, HiCheckCircle } from 'react-icons/hi2'
+import { HiXMark, HiCheckCircle, HiCheck } from 'react-icons/hi2'
+import { BiConfused } from "react-icons/bi";
 import {Button} from '../components/catalyst/button'
 import { Avatar } from './catalyst/avatar'
 import type { Cat } from "../store/types";
 import { Dialog, DialogActions, DialogBody } from '../components/catalyst/dialog'
 import { Radio, RadioGroup } from '@headlessui/react'
 import { useGameStore } from '../store/useGameStore'
+import { getCatDetails } from '../utils/helpers';
 
 export type SolveClueModalProps = {
     isOpen?: boolean
@@ -19,10 +21,14 @@ export type SolveClueModalProps = {
 export default function SolveClueModal({isOpen, onClose, culprits, onClick, onNextRound}: SolveClueModalProps) {
     const [selectedCulprit, setSelectedCulprit] = useState(culprits[0].id)
     const currentRoomId = useGameStore((state) => state.currentRoomId);
+       const scenes = useGameStore((state) => state.scenes)
+       const scene = scenes.find(r => r.roomId === currentRoomId)
+    const score = useGameStore((state) => state.score); 
 const guess = useGameStore((state) =>
   state.guesses.find((g) => g.roomId === currentRoomId)
 );
 const isCorrect = guess?.isCorrect;
+const guiltyCat = getCatDetails(scene?.guiltyCatId ?? '')
 
   return (
      <Dialog open={isOpen} onClose={onClose} size='xl'>
@@ -39,7 +45,7 @@ const isCorrect = guess?.isCorrect;
         <Divider className='mt-2' />
        
         <DialogBody>
-       <fieldset>
+       {!guess ? <fieldset>
       <legend className="font-bold text-[#744B93]">Select the Culprit</legend>
       <RadioGroup
         value={selectedCulprit}
@@ -48,7 +54,6 @@ const isCorrect = guess?.isCorrect;
       >
         {culprits.map((culprit) => (
           <Radio
-            disabled={Boolean(guess)}
             key={culprit.id}
             value={culprit.id}
             aria-label={culprit.name}
@@ -69,17 +74,31 @@ const isCorrect = guess?.isCorrect;
           </Radio>
         ))}
       </RadioGroup>
-    </fieldset>
+    </fieldset> : null}
 
-    {guess && isCorrect ? <h1>You got it right!!!</h1>: null}
-    {guess && !isCorrect ? <h1>You got it wrong 👎🏽 </h1>: null}
+    {guess && isCorrect ?<div className='flex flex-col gap-y-4'>
+          <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-green-100">
+                <HiCheck aria-hidden="true" size={50} className="size-6 text-green-600" />
+              </div>
+              <p  className="text-base font-semibold text-gray-900 text-center">You solved the case and caught the culprit!!</p>
+              <p className="text-base font-semibold text-gray-900 text-center">Current Score: {score} points</p>
+              </div>: null}
+    {guess && !isCorrect ? <div className='flex flex-col gap-y-4'>
+          <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-red-100">
+                <BiConfused aria-hidden="true" size={50} className="size-6 text-red-600" />
+              </div>
+              <p  className="text-base font-semibold text-gray-900 text-center">Not quite right...</p>
+              <p className="text-base font-semibold text-gray-900 text-center">Current Score: {score} points</p>
+              <div className='flex gap-x-2 justify-center'><p>The guilty cat was {guiltyCat?.name}</p><Avatar src={guiltyCat?.imgSrc} className="size-6" square /></div>
+
+              </div>: null}
         </DialogBody>
         <DialogActions className='w-full'>
           {!guess && <Button className='w-full cursor-pointer' onClick={() => onClick(selectedCulprit)}>Submit Guess</Button>}
           {guess && <Button className='w-full cursor-pointer' onClick={() => {
             onClose()
             onNextRound()
-            }}>Next Round ➡️</Button>}
+            }}>Play Next Round ➡️</Button>}
         </DialogActions>
       </Dialog>
   )

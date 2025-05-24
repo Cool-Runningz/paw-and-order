@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'PixelFont';
-  src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-}
 .pixel-title {
   font-family: 'Press Start 2P', monospace;
   text-shadow: 4px 4px 0px rgba(116, 75, 147, 0.3);
@@ -42,21 +38,7 @@
   box-shadow: 4px 4px 0 rgba(116, 75, 147, 0.3);
   transform: rotate(-2deg);
 }
-.cat-silhouette {
-  width: 100%;
-  height: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: bottom;
-  mask-image: url("https://uploadthingy.s3.us-west-1.amazonaws.com/uoZ4qN6izYE4DQfxwkok8h/1F431.svg");
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-image: url("https://uploadthingy.s3.us-west-1.amazonaws.com/uoZ4qN6izYE4DQfxwkok8h/1F431.svg");
-  -webkit-mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-}
+
 .cat-label {
   background-color: white;
   border: 2px solid #744B93;

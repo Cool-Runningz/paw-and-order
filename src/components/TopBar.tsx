@@ -14,6 +14,7 @@ type TopBarProps = {
 export default function TopBar({title}: TopBarProps) {
 	const [solveModelOpen, setSolveModalOpen] = useState(false)
 	   const cats =  useGameStore((state) => state.cats) 
+	     const setStatus = useGameStore((state) => state.setStatus);
 	   const submitGuess = useGameStore((state) => state.submitGuess)
 	      const currentRoomId = useGameStore((state) => state.currentRoomId)  
 		  const setRoomId = useGameStore((state) => state.setRoomId);
@@ -37,6 +38,10 @@ export default function TopBar({title}: TopBarProps) {
 		<SolveClueModal isOpen={solveModelOpen} onClose={() => setSolveModalOpen(false)} culprits={cats} 
 		onNextRound={() => {
 			const nextRoomId = getNextRoomId(currentRoomId)
+			if(nextRoomId === -100){
+				setStatus('GAME_OVER')
+				return
+			}
 			setRoomId(nextRoomId)
 			shuffleCats()
 		}}

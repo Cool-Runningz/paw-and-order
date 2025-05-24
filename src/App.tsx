@@ -1,6 +1,7 @@
 import { useGameStore } from "./store/useGameStore";
 import './App.css'
 import  SplashScreen from './screens/SplashScreen'
+import GameOverScreen from "./screens/GameOverScreen";
 import Scene from './screens/Scene'
 
 function App() {
@@ -8,7 +9,9 @@ function App() {
 
   return (
     <div className="w-full min-h-screen bg-gray-900">
-      {status === 'START' ? <SplashScreen  /> : <Scene />}
+      {status === 'GAME_OVER' ?  <GameOverScreen /> : null}
+      {status === 'START' ? <SplashScreen  /> : null}
+      {status === 'PLAYING' ? <Scene  /> : null}
     </div>
   )
 }

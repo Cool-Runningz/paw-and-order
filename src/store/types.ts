@@ -1,6 +1,6 @@
 import type { IconType } from "react-icons";
 
-export type Status = "START" | "PLAYING" | "OVER"
+export type Status = "START" | "PLAYING" | "GAME_OVER"
 
 export type Room = {
     id: "kitchen" | "living_room" | "office" | "bathroom",
@@ -40,6 +40,7 @@ export type GameStore = {
     scenes: Scene[];
     setScenes: (scenes: Scene[]) => void;
     startGame: () => void;
+    resetGame: () => void;
     score: number;
     guesses: Guess[]
     submitGuess: (roomId: Room['id'], selectedCatId: string) => void;

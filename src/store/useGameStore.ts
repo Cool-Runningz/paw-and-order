@@ -39,7 +39,7 @@ export const useGameStore = create<GameStore>((set) => ({
     cats: [],
     scenes: [],
     score: 0,
-    currentRoomId: 'living_room',
+    //currentRoomId: 'living_room',
     guesses: []
   }),
   submitGuess: (roomId, selectedCatId) => {

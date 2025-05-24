@@ -90,7 +90,7 @@ export function getShuffledCats(cats: Cat[],count = 5): Cat[] {
   return shuffle([...cats]).slice(0, count)
 }
 
-export function getNextRoomId(roomId: Room['id']): Room['id'] {
+export function getNextRoomId(roomId: Room['id']): Room['id'] | -100 {
   const currentRoomIndex = rooms.findIndex(room => room.id === roomId)
   const lastIndex = rooms.length - 1
   let nextRoomIndex = 1
@@ -98,6 +98,7 @@ export function getNextRoomId(roomId: Room['id']): Room['id'] {
     nextRoomIndex = currentRoomIndex + 1
   } else {
     nextRoomIndex = 0
+    return -100
   }
 
   return rooms[nextRoomIndex].id

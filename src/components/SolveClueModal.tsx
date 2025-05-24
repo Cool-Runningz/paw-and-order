@@ -19,7 +19,7 @@ export type SolveClueModalProps = {
 }
 
 export default function SolveClueModal({isOpen, onClose, culprits, onClick, onNextRound}: SolveClueModalProps) {
-    const [selectedCulprit, setSelectedCulprit] = useState(culprits[0].id)
+    const [selectedCulprit, setSelectedCulprit] = useState(null)
     const currentRoomId = useGameStore((state) => state.currentRoomId);
        const scenes = useGameStore((state) => state.scenes)
        const scene = scenes.find(r => r.roomId === currentRoomId)
@@ -94,9 +94,10 @@ const guiltyCat = getCatDetails(scene?.guiltyCatId ?? '')
               </div>: null}
         </DialogBody>
         <DialogActions className='w-full'>
-          {!guess && <Button className='w-full cursor-pointer' onClick={() => onClick(selectedCulprit)}>Submit Guess</Button>}
+          {!guess && <Button className='w-full cursor-pointer disabled:cursor-not-allowed' disabled={!selectedCulprit} onClick={() => onClick(selectedCulprit ?? culprits[0].id)}>Submit Guess</Button>}
           {guess && <Button className='w-full cursor-pointer' onClick={() => {
             onClose()
+            setSelectedCulprit(null)
             onNextRound()
             }}>Play Next Round ➡️</Button>}
         </DialogActions>

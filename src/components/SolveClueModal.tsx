@@ -3,7 +3,7 @@ import { Divider } from '../components/catalyst/divider'
 import { HiXMark, HiCheckCircle } from 'react-icons/hi2'
 import {Button} from '../components/catalyst/button'
 import { Avatar } from './catalyst/avatar'
-import type { Cat, Room } from "../store/types";
+import type { Cat } from "../store/types";
 import { Dialog, DialogActions, DialogBody } from '../components/catalyst/dialog'
 import { Radio, RadioGroup } from '@headlessui/react'
 import { useGameStore } from '../store/useGameStore'
@@ -48,6 +48,7 @@ const isCorrect = guess?.isCorrect;
       >
         {culprits.map((culprit) => (
           <Radio
+            disabled={Boolean(guess)}
             key={culprit.id}
             value={culprit.id}
             aria-label={culprit.name}

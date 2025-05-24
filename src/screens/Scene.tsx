@@ -18,6 +18,8 @@ export default function Scene() {
    const cats =  useGameStore((state) => state.cats) 
    const scenes = useGameStore((state) => state.scenes)
    const scene = scenes.find(r => r.roomId === room?.id)
+      const guesses = useGameStore((state) => state.guesses)  
+      const score = useGameStore((state) => state.score)  
   const Icon = scene?.shenanigan.clue.icon 
 
   console.groupCollapsed("Scene")
@@ -25,6 +27,8 @@ export default function Scene() {
    console.log("cats: ", cats)
    console.log('current: ', currentRoomId)
    console.log('sene: ', scene)
+   console.log('guesses: ', guesses)
+   console.log('score: ', score)
    console.groupEnd()
 
   if (!room) return null; 

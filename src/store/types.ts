@@ -34,12 +34,15 @@ export type GameStore = {
     currentRoomId: Room['id'];
     setStatus: (status: Status) => void;
     setRoomId: (id: Room['id']) => void;
+    shuffleCats: () => void;
     cats: Cat[]
     setCats: (cats: Cat[]) => void;
     scenes: Scene[];
     setScenes: (scenes: Scene[]) => void;
     startGame: () => void;
     score: number;
+    guesses: Guess[]
+    submitGuess: (roomId: Room['id'], selectedCatId: string) => void;
 }
 
 export type Cat = {
@@ -56,4 +59,10 @@ export type Cat = {
     };
     alibi: string;
     imgSrc: string;
+};
+
+export type Guess = {
+  roomId: string;
+  selectedCatId: string;
+  isCorrect?: boolean;
 };

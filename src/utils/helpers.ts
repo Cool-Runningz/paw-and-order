@@ -1,7 +1,7 @@
 import shuffle from 'just-shuffle';
 import rooms from '../data/rooms';
 import shenanigans from '../data/shenanigans';
-import type { Cat, Scene } from '../store/types';
+import type { Cat, Room, Scene } from '../store/types';
 
 export function generateRound(cats: Cat[]): Scene[] {
   const usedShenaniganIds = new Set<string>();
@@ -86,4 +86,17 @@ export function generateRound(cats: Cat[]): Scene[] {
 
 export function getShuffledCats(cats: Cat[],count = 5): Cat[] {
   return shuffle([...cats]).slice(0, count)
+}
+
+export function getNextRoomId(roomId: Room['id']): Room['id'] {
+  const currentRoomIndex = rooms.findIndex(room => room.id === roomId)
+  const lastIndex = rooms.length - 1
+  let nextRoomIndex = 1
+  if(currentRoomIndex + 1 <=lastIndex){
+    nextRoomIndex = currentRoomIndex + 1
+  } else {
+    nextRoomIndex = 0
+  }
+
+  return rooms[nextRoomIndex].id
 }

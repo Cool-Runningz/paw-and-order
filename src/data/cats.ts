@@ -6,7 +6,7 @@ const cats: Cat[] = [
     "name": "Mr. Whiskers",
     stats: {
       "weight": 14,
-       "size": "medium",
+       "size": "large",
         "agility": 7,
             "personality": "lazy",
     "activityLevel": "low",
@@ -23,7 +23,7 @@ const cats: Cat[] = [
     "breed": "black",
     stats: {
      "weight": 9,
-    "size": "small",
+    "size": "medium",
     "agility": 9,
     "personality": "curious",
     "activityLevel": "high",
@@ -38,7 +38,7 @@ const cats: Cat[] = [
      "breed": "white",
      stats: {
  "weight": 10,
-    "size": "large",
+    "size": "medium",
     "agility": 6,
     "personality": "mischievous",
     "activityLevel": "medium",
@@ -127,7 +127,7 @@ const cats: Cat[] = [
     "name": "Socks",
     stats: {
  "weight": 7,
- "size": "medium",
+ "size": "small",
     "agility": 6,
     "personality": "bold",
     "activityLevel": "high",

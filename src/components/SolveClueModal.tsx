@@ -3,19 +3,26 @@ import { Divider } from '../components/catalyst/divider'
 import { HiXMark, HiCheckCircle } from 'react-icons/hi2'
 import {Button} from '../components/catalyst/button'
 import { Avatar } from './catalyst/avatar'
-import type { Cat } from "../store/types";
+import type { Cat, Room } from "../store/types";
 import { Dialog, DialogActions, DialogBody } from '../components/catalyst/dialog'
 import { Radio, RadioGroup } from '@headlessui/react'
+import { useGameStore } from '../store/useGameStore'
 
 export type SolveClueModalProps = {
     isOpen?: boolean
     onClose: () => void
     culprits: Cat[]
+    onNextRound: () => void
+    onClick: (selectedCulprit: Cat['id']) => void
 }
 
-export default function SolveClueModal({isOpen, onClose, culprits}: SolveClueModalProps) {
-    const [selectedCulprit, setSelectedCulprit] = useState(culprits[0])
-    console.log('culprits: ', culprits)
+export default function SolveClueModal({isOpen, onClose, culprits, onClick, onNextRound}: SolveClueModalProps) {
+    const [selectedCulprit, setSelectedCulprit] = useState(culprits[0].id)
+    const currentRoomId = useGameStore((state) => state.currentRoomId);
+const guess = useGameStore((state) =>
+  state.guesses.find((g) => g.roomId === currentRoomId)
+);
+const isCorrect = guess?.isCorrect;
 
   return (
      <Dialog open={isOpen} onClose={onClose} size='xl'>
@@ -63,9 +70,15 @@ export default function SolveClueModal({isOpen, onClose, culprits}: SolveClueMod
       </RadioGroup>
     </fieldset>
 
+    {guess && isCorrect ? <h1>You got it right!!!</h1>: null}
+    {guess && !isCorrect ? <h1>You got it wrong 👎🏽 </h1>: null}
         </DialogBody>
         <DialogActions className='w-full'>
-          <Button className='w-full' onClick={() => console.log('clse')}>Submit Guess</Button>
+          {!guess && <Button className='w-full cursor-pointer' onClick={() => onClick(selectedCulprit)}>Submit Guess</Button>}
+          {guess && <Button className='w-full cursor-pointer' onClick={() => {
+            onClose()
+            onNextRound()
+            }}>Next Round ➡️</Button>}
         </DialogActions>
       </Dialog>
   )

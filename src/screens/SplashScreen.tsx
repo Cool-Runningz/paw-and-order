@@ -1,5 +1,6 @@
 import { LuPawPrint } from "react-icons/lu";
 import { useGameStore } from "../store/useGameStore";
+import rooms from '../data/rooms';
 
 export default function SplashScreen() {
   const setRoomId = useGameStore((state) => state.setRoomId);
@@ -102,9 +103,9 @@ export default function SplashScreen() {
       <button
         onClick={() => {
           startGame();
-          setRoomId('living_room')
+          setRoomId(rooms[0].id)
         }}
-        className="whimsical-button mb-4 cursor-pointer bg-[#744B93] hover:bg-[#5d3c76] text-white font-bold py-4 px-8 text-xl transform transition-transform hover:scale-105 flex items-center z-10"
+        className="whimsical-button mb-12 sm:mb-8 cursor-pointer bg-[#744B93] hover:bg-[#5d3c76] text-white font-bold py-4 px-8 text-xl transform transition-transform hover:scale-105 flex items-center z-10"
       >
         <LuPawPrint size={24} className="mr-2" />
         Start Playing!

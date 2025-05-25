@@ -55,7 +55,7 @@ export default function Scene() {
       </div>
     );
   })}
-   <div className="absolute bottom-4 left-2">
+   <div className="absolute bottom-8 left-4">
    <ClueButton onClick={() => setOpenClueDrawer(prevState => !prevState)} >
     {Icon && <Icon size={75} /> }
    </ClueButton>

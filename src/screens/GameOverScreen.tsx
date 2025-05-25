@@ -45,14 +45,14 @@ const incorrectGuesses  = totalCases - correctGuesses
           <span className="mx-2 text-[#ECA0B0]">&</span>
           <span className="text-[#744B93]">ORDER</span>
         </h1>
-         <div className="whimsical-badge bg-[#C889B5] border-4 border-[#744B93] rounded-full px-6 py-2 inline-block">
-          <p className="text-[#3f294f] font-bold">
+         <div className="whimsical-badge bg-[#E0CDB2] border-4 border-[#744B93] rounded-full px-6 py-2 inline-block">
+          <p className="text-[#744B93]  font-bold">
            Detective Performance Report
           </p>
         </div>
       </div>
            {/* Stats Container */}
-            <div className="w-full max-w-4xl mx-auto z-10 grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="w-full max-w-4xl mx-auto z-10 grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
               {/* Case Summary Card */}
               <div className="whimsical-card bg-[#A4D4D4] border-[#744B93]">
                 <div className="p-6 space-y-4">

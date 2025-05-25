@@ -34,11 +34,10 @@ export default function CatProfileDrawer({isOpen, onClose, cat}: CatProfileDrawe
                       <button
                         type="button"
                         onClick={onClose}
-                        className="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500"
+                                className="rounded-full cursor-pointer bg-[#744B93] p-1.5 text-white shadow-xs hover:brightness-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       >
-                        <span className="absolute -inset-2.5" />
                         <span className="sr-only">Close panel</span>
-                        <HiXMark aria-hidden="true" size={25} className='fill-black' />
+                                <HiXMark aria-hidden="true" className="size-5 fill-white" />
                       </button>
                     </div>
                   </div>

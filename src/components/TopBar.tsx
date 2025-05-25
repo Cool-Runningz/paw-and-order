@@ -1,6 +1,4 @@
-import { LuShieldQuestion } from "react-icons/lu";
-import { PiDetectiveDuotone } from "react-icons/pi";
-import {Button} from '../components/catalyst/button'
+import { PiDetectiveDuotone, PiGearDuotone } from "react-icons/pi";
 import SolveClueModal from "./SolveClueModal";
 import { useState } from "react";
 import { useGameStore } from "../store/useGameStore";
@@ -27,14 +25,14 @@ export default function TopBar({title}: TopBarProps) {
 		<header className="absolute inset-x-0 top-0 z-50 bg-[#7e5991] text-white">
 			<nav className="flex items-center justify-between p-3 lg:px-8">
 				<div className="flex lg:flex-1">
-						<span className="-m-1.5 p-1.5 text-xl font-semibold flex items-center gap-x-2">
+						<span className="-m-1.5 p-1.5 text-base sm:text-xl font-semibold flex items-center gap-x-2 max-w-fit truncate">
 						{title}
 						</span>
 				</div>
-				<div className="flex flex-1 justify-end gap-x-4 md:gap-x-8">
-					<Button onClick={() => setSolveModalOpen(true)} outline className="bg-[#a8d0d2] cursor-pointer flex items-center"><PiDetectiveDuotone size={20} />Solve Case</Button>
-				   <button className="cursor-pointer"><span className="sr-only">View game Instructions</span><LuShieldQuestion size={25}/></button>
-				</div>
+				<div className="flex justify-end gap-x-4 md:gap-x-8">
+					<button onClick={() => setSolveModalOpen(true)} className="cursor-pointer shrink-0 inline-flex items-center gap-x-1.5 rounded-md bg-[#a8d0d2] px-3 py-2 text-sm font-semibold text-black shadow-xs hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a8d0d2]"><PiDetectiveDuotone size={20} />Solve Case</button>
+{/* 				   <button className="cursor-pointer"><span className="sr-only">View game Instructions</span><PiGearDuotone size={24}/></button>
+ */}				</div>
 			</nav>
 		</header>
 		<SolveClueModal isOpen={solveModelOpen} onClose={() => setSolveModalOpen(false)} culprits={cats} 

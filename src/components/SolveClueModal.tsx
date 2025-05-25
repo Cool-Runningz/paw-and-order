@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import { Divider } from '../components/catalyst/divider'
 import { HiXMark, HiCheckCircle, HiCheck } from 'react-icons/hi2'
+import { FaArrowRight } from "react-icons/fa";
 import { BiConfused } from "react-icons/bi";
 import {Button} from '../components/catalyst/button'
 import { Avatar } from './catalyst/avatar'
@@ -36,9 +37,9 @@ const guiltyCat = getCatDetails(scene?.guiltyCatId ?? '')
          <button
         type="button"
         onClick={onClose}
-        className="rounded-full cursor-pointer bg-indigo-600 p-1.5 text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="rounded-full cursor-pointer bg-[#744B93] p-1.5 text-white shadow-xs hover:brightness-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       >
-        <HiXMark aria-hidden="true" className="size-5" />
+        <HiXMark aria-hidden="true" className="size-5 fill-white" />
       </button>
         </div>
         <Divider className='mt-2' />
@@ -65,10 +66,10 @@ const guiltyCat = getCatDetails(scene?.guiltyCatId ?? '')
                  
               </span>
             </span>
-            <HiCheckCircle aria-hidden="true" className="size-5 text-indigo-600 group-not-data-checked:invisible" />
+            <HiCheckCircle aria-hidden="true" className="size-5 text-[#744B93] group-not-data-checked:invisible" />
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-px rounded-lg border-2 border-transparent group-data-checked:border-indigo-600 group-data-focus:border"
+              className="pointer-events-none absolute -inset-px rounded-lg border-2 border-transparent group-data-checked:border-[#744B93] group-data-focus:border"
             />
           </Radio>
         ))}
@@ -79,7 +80,7 @@ const guiltyCat = getCatDetails(scene?.guiltyCatId ?? '')
           <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-green-100">
                 <HiCheck aria-hidden="true" size={50} className="size-6 text-green-600" />
               </div>
-              <p  className="text-base font-semibold text-gray-900 text-center">You solved the case and caught the culprit!!</p>
+              <p  className="text-base font-semibold text-gray-900 text-center">You solved the case and caught the culprit!</p>
               <p className="text-base font-semibold text-gray-900 text-center">Current Score: {score} points</p>
               </div>: null}
     {guess && !isCorrect ? <div className='flex flex-col gap-y-4'>
@@ -88,7 +89,7 @@ const guiltyCat = getCatDetails(scene?.guiltyCatId ?? '')
               </div>
               <p  className="text-base font-semibold text-gray-900 text-center">Not quite right...</p>
               <p className="text-base font-semibold text-gray-900 text-center">Current Score: {score} points</p>
-              <div className='flex gap-x-2 justify-center'><p>The guilty cat was {guiltyCat?.name}</p><Avatar src={guiltyCat?.imgSrc} className="size-6" square /></div>
+              <div className='flex gap-x-2 justify-center items-center'><p>The guilty cat was {guiltyCat?.name}</p><Avatar src={guiltyCat?.imgSrc} className="size-8" square /></div>
 
               </div>: null}
         </DialogBody>
@@ -98,7 +99,7 @@ const guiltyCat = getCatDetails(scene?.guiltyCatId ?? '')
             onClose()
             setSelectedCulprit(null)
             onNextRound()
-            }}>Play Next Round ➡️</Button>}
+            }}>Play Next Round <FaArrowRight size={14}  /></Button>}
         </DialogActions>
       </Dialog>
   )

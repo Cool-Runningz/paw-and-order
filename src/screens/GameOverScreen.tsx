@@ -23,7 +23,7 @@ const incorrectGuesses  = totalCases - correctGuesses
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute animate-float-slow"
+            className="absolute"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,

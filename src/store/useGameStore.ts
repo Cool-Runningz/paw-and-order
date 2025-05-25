@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import type { GameStore } from './types'
-import catsData from '../data/cats'
-import { getShuffledCats, generateRound } from '../utils/helpers'
+import rooms from '../data/rooms'
+import {  generateScene } from '../utils/helpers'
 import type { Scene, Guess } from './types'
 import { CORRECT_GUESS_ROOM_SCORE } from '../utils/constants'
 
@@ -10,24 +10,15 @@ export const useGameStore = create<GameStore>((set) => ({
   setStatus: (status) => set({ status }),
   currentRoomId: 'living_room',
   setRoomId: (id) => set({ currentRoomId: id}),
-  cats: [],
-  setCats: (cats) => set({ cats }),
-  scenes: [],
+  scene: generateScene(rooms[0].id),
   guesses: [],
-  setScenes: (scenes: Scene[]) => set({ scenes }),
+  setScene: (scene: Scene) => set({ scene }),
   score: 0,
-  shuffleCats: () => {
-    set({
-      cats: getShuffledCats(catsData)
-    })
-  },
   startGame: () => {
-    const cats = getShuffledCats(catsData)
-    const scenes = generateRound(cats)
+    const scene = generateScene(rooms[0].id)
     set({
-      cats,
-      scenes,
-      currentRoomId: scenes[0].roomId,
+      scene,
+      currentRoomId: scene.roomId,
       status: "PLAYING",
       score: 0,
       guesses: []
@@ -36,15 +27,14 @@ export const useGameStore = create<GameStore>((set) => ({
   resetGame: () =>
   set({
     status: "START",
-    cats: [],
-    scenes: [],
+    scene: generateScene(rooms[0].id),
     score: 0,
     //currentRoomId: 'living_room',
     guesses: []
   }),
   submitGuess: (roomId, selectedCatId) => {
   set((state) => {
-    const scene = state.scenes.find((scene) => scene.roomId === roomId);
+    const scene = state.scene
     if (!scene) return state;
 
     const isCorrect = scene.guiltyCatId === selectedCatId;

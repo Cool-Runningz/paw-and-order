@@ -4,7 +4,7 @@ import {Button} from '../components/catalyst/button'
 import SolveClueModal from "./SolveClueModal";
 import { useState } from "react";
 import { useGameStore } from "../store/useGameStore";
-import { getNextRoomId } from "../utils/helpers";
+import { generateScene, getNextRoomId } from "../utils/helpers";
 
 
 type TopBarProps = {
@@ -13,12 +13,14 @@ type TopBarProps = {
 
 export default function TopBar({title}: TopBarProps) {
 	const [solveModelOpen, setSolveModalOpen] = useState(false)
-	   const cats =  useGameStore((state) => state.cats) 
+	   const scene =  useGameStore((state) => state.scene) 
+		  	   const cats = scene.cats
 	     const setStatus = useGameStore((state) => state.setStatus);
 	   const submitGuess = useGameStore((state) => state.submitGuess)
-	      const currentRoomId = useGameStore((state) => state.currentRoomId)  
+	      const currentRoomId = useGameStore((state) => state.currentRoomId)
+  
+		  const setScene = useGameStore((state) => state.setScene);
 		  const setRoomId = useGameStore((state) => state.setRoomId);
-		  const shuffleCats = useGameStore((state) => state.shuffleCats);
 
 	return (
 		<>
@@ -42,8 +44,9 @@ export default function TopBar({title}: TopBarProps) {
 				setStatus('GAME_OVER')
 				return
 			}
+			const nextScene = generateScene(nextRoomId)
+			setScene(nextScene)
 			setRoomId(nextRoomId)
-			shuffleCats()
 		}}
 		onClick={(selectedCatId) => {
 			console.log('You selected: ', selectedCatId)

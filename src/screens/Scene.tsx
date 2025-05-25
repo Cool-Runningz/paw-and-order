@@ -14,12 +14,11 @@ export default function Scene() {
     const [openClueDrawer, setOpenClueDrawer] = useState(false)
     const [selectedCat, setSelectedCat] = useState<Cat | null>(null)
    const room = useGameStore((state) => rooms.find((s) => s.id === state.currentRoomId)) 
-   const cats =  useGameStore((state) => state.cats) 
-   const scenes = useGameStore((state) => state.scenes)
-   const scene = scenes.find(r => r.roomId === room?.id)
+   const scene = useGameStore((state) => state.scene)
       const guesses = useGameStore((state) => state.guesses)  
       const score = useGameStore((state) => state.score)  
-  const Icon = scene?.shenanigan.clue.icon 
+     const cats =  scene.cats
+  const Icon = scene.shenanigan.clue.icon 
 
   console.groupCollapsed("Scene")
   console.log('room: ', room)

@@ -58,7 +58,7 @@ const shenanigans: Shenanigan[] = [
     description: "An overturned chair lies on the floor.",
     caseName: "The Case of the Tipped Chair",
     requiredTraits: {
-      weight: 4,
+      weight: 12,
       activityLevel: "high",
       size: "large",
       personality: "bold"
@@ -122,7 +122,7 @@ const shenanigans: Shenanigan[] = [
     caseName: "The Case of the Vanishing Snacks",
     requiredTraits: {
       personality: "bold",
-      weight: 4,
+      weight: 8,
       activityLevel: "medium",
       ageGroup: "adult"
     },
@@ -141,7 +141,7 @@ const shenanigans: Shenanigan[] = [
     caseName: "The Lamp That Couldn't Stand",
     requiredTraits: {
       activityLevel: "high",
-      weight: 5,
+      weight: 12,
       personality: "mischievous",
       size: "large"
     },

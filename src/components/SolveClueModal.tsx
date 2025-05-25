@@ -21,8 +21,7 @@ export type SolveClueModalProps = {
 export default function SolveClueModal({isOpen, onClose, culprits, onClick, onNextRound}: SolveClueModalProps) {
     const [selectedCulprit, setSelectedCulprit] = useState(null)
     const currentRoomId = useGameStore((state) => state.currentRoomId);
-       const scenes = useGameStore((state) => state.scenes)
-       const scene = scenes.find(r => r.roomId === currentRoomId)
+       const scene = useGameStore((state) => state.scene)
     const score = useGameStore((state) => state.score); 
 const guess = useGameStore((state) =>
   state.guesses.find((g) => g.roomId === currentRoomId)

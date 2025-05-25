@@ -12,6 +12,7 @@ export type Scene = {
     roomId: Room['id']
     guiltyCatId: string;
     shenanigan: Shenanigan;
+    cats: Cat[]
 }
 
 export type Shenanigan = {
@@ -34,11 +35,8 @@ export type GameStore = {
     currentRoomId: Room['id'];
     setStatus: (status: Status) => void;
     setRoomId: (id: Room['id']) => void;
-    shuffleCats: () => void;
-    cats: Cat[]
-    setCats: (cats: Cat[]) => void;
-    scenes: Scene[];
-    setScenes: (scenes: Scene[]) => void;
+    scene: Scene;
+    setScene: (scenes: Scene) => void;
     startGame: () => void;
     resetGame: () => void;
     score: number;

@@ -3,87 +3,61 @@ import rooms from '../data/rooms';
 import shenanigans from '../data/shenanigans';
 import cats from '../data/cats';
 import type { Cat, Room, Scene } from '../store/types';
+import { TRAIT_WEIGHTS } from './constants';
 
-export function generateRound(cats: Cat[]): Scene[] {
-  const usedShenaniganIds = new Set<string>();
-  const catAssignmentCount = new Map<string, number>();
-
-  return rooms.map((room) => {
-    const availableShenanigans = shenanigans.filter(
-      (s) => s.roomId === room.id && !usedShenaniganIds.has(s.id)
-    );
-
-    const shenanigan = shuffle(availableShenanigans)[0];
-    usedShenaniganIds.add(shenanigan.id);
-
-    const eligibleCats = cats.filter(cat => {
-      const count = catAssignmentCount.get(cat.id) ?? 0;
-      return count < 2;
-    });
-
-    // Bias guilty cat selection toward those matching requiredTraits, if present
-    //console.log('shenanigan: ', shenanigan)
-    let matchingCats = eligibleCats;
-
-    if (shenanigan.requiredTraits) {
-      const traitWeights: Record<string, number> = {
-        agility: 2,
-        weight: 1,
-        activityLevel: 3,
-        personality: 2,
-        ageGroup: 2,
-        size: 1,
-      };
-
-      // Score each cat based on trait alignment
-      const scoredCats = eligibleCats.map(cat => {
-        let score = 0;
-        for (const [key, required] of Object.entries(shenanigan.requiredTraits!)) {
-          const catValue = cat.stats[key as keyof typeof cat.stats];
-
-          if (typeof required === 'number') {
-            if (typeof catValue === 'number') {
-              const closeness = Math.max(0, catValue - required);
-              score += closeness * (traitWeights[key] ?? 1);
-            }
-          } else {
-            if (catValue === required) {
-              score += traitWeights[key] ?? 1;
-            }
-          }
+export function generateScene(roomId: Room['id']): Scene{
+ // 1. Filter shenanigans for this room
+  const eligibleShenanigans = shenanigans.filter(s => s.roomId === roomId);
+  const shenanigan = shuffle(eligibleShenanigans)[0];
+  
+  // 2. Score all cats for best guilty cat
+  let bestMatchCats: Cat[] = cats;
+  if(shenanigan.requiredTraits){
+    const scoredCats = cats.map(cat => {
+      let score = 0
+      for (const [key, required] of Object.entries(shenanigan.requiredTraits!)) {
+        const catValue = cat.stats[key as keyof typeof cat.stats];
+        if (typeof required === 'number' && typeof catValue === 'number') {
+          // The closer the value, the higher the score
+          score -= Math.abs(catValue - required) * (TRAIT_WEIGHTS[key] ?? 1);
+        } else if (catValue === required) {
+          score += TRAIT_WEIGHTS[key] ?? 1;
         }
-        return { cat, score };
-      });
-
-      // Find highest score and filter cats that share it
-      const maxScore = Math.max(...scoredCats.map(c => c.score));
-      const topScorers = scoredCats.filter(c => c.score === maxScore).map(c => c.cat);
-
-      if(room.name === 'Living Room'){
-      console.groupCollapsed("output")
-      console.log('scoredCats: ', scoredCats)
-      console.log("maxScore: ", maxScore)
-      console.log('topScorers: ', topScorers)
-      console.groupEnd()
       }
+      return { cat, score };
+    })
+    const maxScore = Math.max(...scoredCats.map(c => c.score));
+    bestMatchCats = scoredCats.filter(c => c.score === maxScore).map(c => c.cat);
 
-      matchingCats = topScorers.length > 0 ? topScorers : eligibleCats;
-    }
-    //const guiltyCat = matchingCats.length > 1 ? shuffle(matchingCats)[0] : matchingCats[0];
-    const guiltyCat =  matchingCats[0];
-    catAssignmentCount.set(
-      guiltyCat.id,
-      (catAssignmentCount.get(guiltyCat.id) ?? 0) + 1
-    );
+    //TESTING - Eventually remove this
+   /*  console.groupCollapsed("the cats")
+    console.log('scoredCats: ', scoredCats)
+    console.log("maxScore: ", maxScore)
+    console.log('bestMatchCats: ', bestMatchCats)
+    console.groupEnd() */
+  }
 
-    return {
-      roomId: room.id,
-      caseName: shenanigan.caseName,
-      shenanigan,
-      guiltyCatId: guiltyCat.id,
-      clues: []
-    };
-  });
+    // 3. Pick the guilty cat randomly from best matches
+  const guiltyCat = shuffle(bestMatchCats)[0];
+  
+  // 4. Pick 4 other random (non-guilty) cats as suspects
+  const otherCats = cats.filter(cat => cat.id !== guiltyCat.id);
+  const suspects = shuffle([guiltyCat, ...shuffle(otherCats).slice(0, 4)]);
+
+  //TESTING - Eventually remove this
+  /* console.groupCollapsed("more cats")
+  console.log("guilty cat: ", guiltyCat)
+  console.log('other cats: ', otherCats)
+  console.log('suspects: ', suspects)
+  console.groupEnd() */
+
+   // 5. Return the scene object
+  return {
+    roomId,
+    shenanigan,
+    guiltyCatId: guiltyCat.id,
+    cats: suspects,
+  } 
 }
 
 export function getShuffledCats(cats: Cat[],count = 5): Cat[] {

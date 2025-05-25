@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/*https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually*/
+@custom-variant dark (&:where(.dark, .dark *)); 
+
 .pixel-title {
   font-family: 'Press Start 2P', monospace;
   text-shadow: 4px 4px 0px rgba(116, 75, 147, 0.3);

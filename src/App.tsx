@@ -1,5 +1,4 @@
 import { useGameStore } from "./store/useGameStore";
-import './App.css'
 import  SplashScreen from './screens/SplashScreen'
 import GameOverScreen from "./screens/GameOverScreen";
 import Scene from './screens/Scene'

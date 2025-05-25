@@ -80,8 +80,8 @@ export default function CatProfileDrawer({isOpen, onClose, cat}: CatProfileDrawe
                          <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">{cat.breed}&nbsp;({cat.stats.ageGroup})</dd>
                       </div>
                       <div>
-                        <dt className="text-sm font-medium text-gray-500 sm:w-40 sm:shrink-0">Size & Weight</dt>
-                        <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">{cat.stats.weight} lbs. ({cat.stats.size})</dd>
+                        <dt className="text-sm font-medium text-gray-500 sm:w-40 sm:shrink-0">Weight</dt>
+                        <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">{cat.stats.weight} lbs.</dd>
                       </div>
                       <div>
                         <dt className="text-sm font-medium text-gray-500 sm:w-40 sm:shrink-0">Personality</dt>

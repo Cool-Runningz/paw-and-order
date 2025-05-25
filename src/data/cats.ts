@@ -6,9 +6,8 @@ const cats: Cat[] = [
     "name": "Mr. Whiskers",
     stats: {
       "weight": 14,
-       "size": "large",
         "agility": 7,
-            "personality": "lazy",
+        "personality": "lazy",
     "activityLevel": "low",
     "ageGroup": "adult"
     },
@@ -23,7 +22,6 @@ const cats: Cat[] = [
     "breed": "black",
     stats: {
      "weight": 9,
-    "size": "medium",
     "agility": 9,
     "personality": "curious",
     "activityLevel": "high",
@@ -38,7 +36,6 @@ const cats: Cat[] = [
      "breed": "white",
      stats: {
  "weight": 10,
-    "size": "medium",
     "agility": 6,
     "personality": "mischievous",
     "activityLevel": "medium",
@@ -53,7 +50,6 @@ const cats: Cat[] = [
     "breed": "calico",
     stats: {
         "weight": 8,
-    "size": "medium",
     "agility": 8,
      "personality": "timid",
     "activityLevel": "medium",
@@ -68,7 +64,6 @@ const cats: Cat[] = [
     "breed": "orange",
     stats: {
 "weight": 10,
-    "size": "large",
     "agility": 7,
     "personality": "bold",
     "activityLevel": "medium",
@@ -83,7 +78,6 @@ const cats: Cat[] = [
      "breed": "white",
     stats: {
  "weight": 5,
-    "size": "small",
     "agility": 9,
     "personality": "lazy",
     "activityLevel": "low",
@@ -98,7 +92,6 @@ const cats: Cat[] = [
     "breed": "gray",
     stats:{
 "weight": 8,
-    "size": "medium",
     "agility": 7,
      "personality": "timid",
     "activityLevel": "low",
@@ -113,7 +106,6 @@ const cats: Cat[] = [
     "breed": "black and white",
     stats: {
 "weight": 5,
-    "size": "small",
     "agility": 8,
     "personality": "curious",
     "activityLevel": "high",
@@ -127,7 +119,6 @@ const cats: Cat[] = [
     "name": "Socks",
     stats: {
  "weight": 7,
- "size": "small",
     "agility": 6,
     "personality": "bold",
     "activityLevel": "high",
@@ -143,7 +134,6 @@ const cats: Cat[] = [
     "breed": "orange",
     stats: {
 "weight": 9,
-    "size": "large",
     "agility": 5,
     "personality": "mischievous",
     "activityLevel": "medium",

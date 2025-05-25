@@ -49,12 +49,11 @@ export type Cat = {
     name: string;
     breed: string;
     stats: {
-         personality: 'curious' | 'timid' | 'bold' | 'lazy' | 'mischievous';
+        personality: 'curious' | 'timid' | 'bold' | 'lazy' | 'mischievous';
         weight: number;
         agility: number;
         activityLevel: 'low' | 'medium' | 'high';
         ageGroup: 'kitten' | 'adult' | 'senior';
-        size: 'small' | 'medium' | 'large';
     };
     alibi: string;
     imgSrc: string;

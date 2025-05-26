@@ -1,8 +1,10 @@
-import { PiDetectiveDuotone, PiGearDuotone } from "react-icons/pi";
+import { PiDetectiveDuotone } from "react-icons/pi";
+import { TbMusic, TbMusicOff } from "react-icons/tb";
 import SolveClueModal from "./SolveClueModal";
 import { useState } from "react";
 import { useGameStore } from "../store/useGameStore";
 import { generateScene, getNextRoomId } from "../utils/helpers";
+import { useAudioStore } from '../store/useAudioStore';
 
 
 type TopBarProps = {
@@ -11,6 +13,9 @@ type TopBarProps = {
 
 export default function TopBar({title}: TopBarProps) {
 	const [solveModelOpen, setSolveModalOpen] = useState(false)
+	const isAudioEnabled = useAudioStore((state) => state.isAudioEnabled);
+    const toggleAudio = useAudioStore((state) => state.toggleAudio);
+
 	   const scene =  useGameStore((state) => state.scene) 
 		  	   const cats = scene.cats
 	     const setStatus = useGameStore((state) => state.setStatus);
@@ -30,9 +35,16 @@ export default function TopBar({title}: TopBarProps) {
 						</span>
 				</div>
 				<div className="flex justify-end gap-x-4 md:gap-x-8">
-					<button onClick={() => setSolveModalOpen(true)} className="cursor-pointer shrink-0 inline-flex items-center gap-x-1.5 rounded-md bg-[#a8d0d2] px-3 py-2 text-sm font-semibold text-black shadow-xs hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a8d0d2]"><PiDetectiveDuotone size={20} />Solve Case</button>
-{/* 				   <button className="cursor-pointer"><span className="sr-only">View game Instructions</span><PiGearDuotone size={24}/></button>
- */}				</div>
+					<button onClick={() => setSolveModalOpen(true)} className="cursor-pointer shrink-0 inline-flex items-center gap-x-1.5 rounded-md bg-[#a8d0d2] px-3 py-2 text-sm font-semibold text-black shadow-xs hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a8d0d2]">
+						<PiDetectiveDuotone size={20} />Solve Case
+						</button>
+				   <button className="cursor-pointer" onClick={() => {
+					toggleAudio()
+				   }}>
+					<span className="sr-only">Turn music {isAudioEnabled ? 'off' : 'on'}</span>
+					{isAudioEnabled ? <TbMusic size={20} /> : <TbMusicOff size={20}/>}
+					</button>
+ 				</div>
 			</nav>
 		</header>
 		<SolveClueModal isOpen={solveModelOpen} onClose={() => setSolveModalOpen(false)} culprits={cats} 

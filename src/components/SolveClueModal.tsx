@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import { Divider } from '../components/catalyst/divider'
 import { HiXMark, HiCheckCircle, HiCheck } from 'react-icons/hi2'
 import { FaArrowRight } from "react-icons/fa";
@@ -10,6 +10,8 @@ import { Dialog, DialogActions, DialogBody } from '../components/catalyst/dialog
 import { Radio, RadioGroup } from '@headlessui/react'
 import { useGameStore } from '../store/useGameStore'
 import { getCatDetails } from '../utils/helpers';
+import { useAudioStore } from '../store/useAudioStore';
+import { useAudio } from '../hooks/useAudio';
 
 export type SolveClueModalProps = {
     isOpen?: boolean
@@ -29,6 +31,32 @@ const guess = useGameStore((state) =>
 );
 const isCorrect = guess?.isCorrect;
 const guiltyCat = getCatDetails(scene?.guiltyCatId ?? '')
+	const isAudioEnabled = useAudioStore((state) => state.isAudioEnabled);
+  	const { playCorrectSound, playWrongSound } = useAudio();
+     
+
+const lastGuessIdRef = useRef<string | null>(null);
+
+useEffect(() => {
+  // No guess? Nothing to do.
+  if (!guess) return;
+
+  const guessId = `${guess.roomId}-${guess.isCorrect}`; // A unique signature
+
+  // Already played this guess's result? Skip.
+  if (lastGuessIdRef.current === guessId) return;
+
+  if (isAudioEnabled && isOpen) {
+    if (isCorrect) {
+      playCorrectSound();
+    } else {
+      playWrongSound();
+    }
+
+    // Mark this guess as played
+    lastGuessIdRef.current = guessId;
+  }
+}, [guess, isAudioEnabled, isOpen, isCorrect, playCorrectSound, playWrongSound]);
 
   return (
      <Dialog open={isOpen} onClose={onClose} size='xl'>

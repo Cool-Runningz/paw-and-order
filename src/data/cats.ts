@@ -105,7 +105,7 @@ const cats: Cat[] = [
     "name": "Boots",
     "breed": "Black and White",
     stats: {
-"weight": 5,
+"weight": 8,
     "agility": 8,
     "personality": "curious",
     "activityLevel": "high",
@@ -343,7 +343,7 @@ const cats: Cat[] = [
     "name": "Simon",
     "breed": "Orange Tabby",
     stats: {
-      "weight": 13,
+      "weight": 16,
       "agility": 5,
       "personality": "timid",
       "activityLevel": "low",

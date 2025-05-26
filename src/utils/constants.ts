@@ -4,8 +4,7 @@ export const TRAIT_WEIGHTS: Record<string, number> = {
     weight: 2,
     activityLevel: 3,
     personality: 2,
-    ageGroup: 2,
-    size: 1,
+    ageGroup: 3,
 };
 export const CAT_POSITIONS = [
   { top: "20%", left: "15%" },

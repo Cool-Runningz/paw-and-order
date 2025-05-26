@@ -507,9 +507,9 @@ const shenanigans: Shenanigan[] = [
   caseName: "The TP Tornado",
   requiredTraits: {
     personality: "timid",
-    weight: 6,
-    ageGroup: "kitten",
-    activityLevel: "medium"
+    weight: 14,
+    ageGroup: "senior",
+    activityLevel: "low"
   },
   clue: {
     details: [

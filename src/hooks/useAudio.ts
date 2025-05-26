@@ -12,7 +12,7 @@ export function useAudio() {
   useEffect(() => {
     if (!bgMusicRef.current) {
       bgMusicRef.current = new Howl({
-        src: ["/audio/The_Enigma_Unfolds.ogg"],
+        src: ["/audio/The_Enigma_Unfolds.mp3"],
         loop: true,
         volume: 0.5,
       });
@@ -20,13 +20,13 @@ export function useAudio() {
     if (!correctRef.current) {
       correctRef.current = new Howl({
         src: ["/audio/yay.mp3"],
-        volume: 1.5,
+        volume: 1.0,
       });
     }
     if (!wrongRef.current) {
       wrongRef.current = new Howl({
         src: ["/audio/sad-trombone.mp3"],
-        volume: 1.5,
+        volume: 1.0,
         rate: 2.0
       });
     }

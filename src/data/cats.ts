@@ -9,7 +9,7 @@ const cats: Cat[] = [
       "agility": 7,
       "personality": "lazy",
     "activityLevel": "low",
-    "ageGroup": "adult"
+    "ageGroup": "senior"
     },
     "breed": "Grey",
     "alibi": "Napping on the windowsill",
@@ -109,7 +109,7 @@ const cats: Cat[] = [
     "agility": 8,
     "personality": "curious",
     "activityLevel": "high",
-    "ageGroup": "kitten"
+    "ageGroup": "adult"
     },
     "alibi": "Playing with yarn",
     "imgSrc": 'images/cats/black-and-white-adult-1.jpg'
@@ -122,7 +122,7 @@ const cats: Cat[] = [
     "agility": 6,
     "personality": "bold",
     "activityLevel": "high",
-    "ageGroup": "kitten"
+    "ageGroup": "adult"
     },
     "breed": "Black and White",
     "alibi": "Looking out the window",

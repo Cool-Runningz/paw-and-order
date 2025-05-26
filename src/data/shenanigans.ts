@@ -18,6 +18,10 @@ import { GiToothbrush } from "react-icons/gi";
 import { FaShower } from "react-icons/fa";
 import { PiTowelFill } from "react-icons/pi";
 import { GiSoap } from "react-icons/gi";
+import { BiSolidBlanket } from "react-icons/bi";
+import { FaUtensils } from "react-icons/fa";
+import { FaRegStickyNote } from "react-icons/fa";
+import { PiToiletPaperFill } from "react-icons/pi";
 
 const shenanigans: Shenanigan[] = [
   {
@@ -431,8 +435,92 @@ const shenanigans: Shenanigan[] = [
     ],
     icon: GiSoap,
     imgSrc: 'images/shenanigans/soap-dish.jpg'
+  },
+},
+{
+  id: "shenanigan_21",
+  roomId: "living_room",
+  description: "A blanket from the couch has been dragged to the floor and rumpled.",
+  caseName: "The Cozy Heist",
+  requiredTraits: {
+    personality: "lazy",
+    weight: 10,
+    ageGroup: "senior",
+    activityLevel: "low"
+  },
+  clue: {
+    details: [
+      "No rush, no panic — just comfort undone.",
+      "The blanket's shift was slow and sly, by a sleepy senior lounging nearby.",
+      "Not mischief, not speed — just a quest for warmth, indeed."
+    ],
+    icon: BiSolidBlanket,
+    imgSrc: 'images/shenanigans/blanket-on-couch.jpg'
   }
 },
+{
+  id: "shenanigan_22",
+  roomId: "kitchen",
+  description: "A food bowl is mysteriously empty, but no mess surrounds it.",
+  caseName: "The Silent Supper",
+  requiredTraits: {
+    personality: "lazy",
+    weight: 12,
+    ageGroup: "senior",
+    activityLevel: "low"
+  },
+  clue: {
+    details: [
+      "No clatter, no chaos, but food is no more.",
+      "The job was clean, the crime was neat — this slow cat sure knows how to eat.",
+      "They didn’t run, they didn’t chase — just strolled up and cleared the place."
+    ],
+    icon: FaUtensils,
+    imgSrc: 'images/shenanigans/plate-with-food.jpg'
+  }
+},
+{
+  id: "shenanigan_23",
+  roomId: "office",
+  description: "A single sticky note is stuck to the floor in a strange spot.",
+  caseName: "The Note Migration",
+  requiredTraits: {
+    personality: "timid",
+    weight: 8,
+    ageGroup: "senior",
+    activityLevel: "low"
+  },
+  clue: {
+    details: [
+      "A small change, but a curious one — that note was not undone by fun.",
+      "Heavy steps and slow-paced paws dragged paper out of laws.",
+      "No pounce, no leap — just one slow sweep."
+    ],
+    icon: FaRegStickyNote,
+    imgSrc: 'images/shenanigans/sticky-note.jpg'
+  }
+},
+{
+  id: "shenanigan_24",
+  roomId: "bathroom",
+  description: "Toilet paper is shredded and strewn across the floor.",
+  caseName: "The TP Tornado",
+  requiredTraits: {
+    personality: "timid",
+    weight: 6,
+    ageGroup: "kitten",
+    activityLevel: "medium"
+  },
+  clue: {
+    details: [
+           "The paper trail winds far and wide — a senior prankster couldn't hide.",
+      "Not fast, but full of flair — this feline left fluff everywhere.",
+      "Years may slow their speed and spring, but shredding TP is still their thing."
+    ],
+    icon: PiToiletPaperFill,
+    imgSrc: "images/shenanigans/toilet-paper.jpg"
+  }
+}
 ];
 
 export default shenanigans;

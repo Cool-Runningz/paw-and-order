@@ -282,6 +282,76 @@ const cats: Cat[] = [
     "alibi": "Knocking things off the shelf",
     "imgSrc": "images/cats/tabby-teenager-1.jpg"
   },
+    {
+    "id": "cat21",
+    "name": "Tuna",
+    "breed": "Siamese",
+    stats: {
+      "weight": 8,
+      "agility": 6,
+      "personality": "lazy",
+      "activityLevel": "low",
+      "ageGroup": "adult"
+    },
+    "alibi": "Dozing in a sunbeam",
+    "imgSrc": "images/cats/siamese-adult-2.jpg"
+  },
+  {
+    "id": "cat22",
+    "name": "Pebbles",
+    "breed": "Bengal",
+    stats: {
+      "weight": 9,
+      "agility": 9,
+      "personality": "curious",
+      "activityLevel": "high",
+      "ageGroup": "adult"
+    },
+    "alibi": "Climbing the shower curtain",
+    "imgSrc": "images/cats/bengal-adult-2.jpg"
+  },
+  {
+    "id": "cat23",
+    "name": "Theo",
+    "breed": "Tabby",
+    stats: {
+      "weight": 7,
+      "agility": 4,
+      "personality": "bold",
+      "activityLevel": "medium",
+      "ageGroup": "kitten"
+    },
+    "alibi": "Staring at the printer",
+    "imgSrc": "images/cats/tabby-kitten-5.jpg"
+  },
+  {
+    "id": "cat24",
+    "name": "Ruby",
+    "breed": "Grey Tabby",
+    stats: {
+      "weight": 9,
+      "agility": 9,
+      "personality": "timid",
+      "activityLevel": "medium",
+      "ageGroup": "adult"
+    },
+    "alibi": "Getting into the cabinets",
+    "imgSrc": "images/cats/grey-adult-3.jpg"
+  },
+  {
+    "id": "cat25",
+    "name": "Simon",
+    "breed": "Orange Tabby",
+    stats: {
+      "weight": 13,
+      "agility": 5,
+      "personality": "timid",
+      "activityLevel": "low",
+      "ageGroup": "senior"
+    },
+    "alibi": "Resting on the couch",
+    "imgSrc": "images/cats/simon.jpeg"
+  }
 ]
 
 export default cats

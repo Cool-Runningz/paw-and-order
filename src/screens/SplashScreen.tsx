@@ -94,7 +94,7 @@ export default function SplashScreen() {
         <p className="text-[#744B93] leading-relaxed">
           Welcome to Paw & Order, where you'll investigate a series of
           mysterious incidents around the house! As the lead detective, you'll
-          examine crime scenes, collect evidence, and interview a cast of
+          examine shenanigans, collect evidence, and interview a cast of
           suspicious felines. But remember: cats never confess - you'll have to
           use your detective skills to solve each case!
         </p>

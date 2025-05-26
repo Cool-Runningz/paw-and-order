@@ -46,7 +46,7 @@ export default function CatProfileDrawer({isOpen, onClose, cat}: CatProfileDrawe
                 <div>
                   <div className="pb-1 sm:pb-6">
                     <div>
-                      <div className="relative h-40 sm:h-56">
+                      <div className="relative h-56 sm:h-75">
                         <img
                           alt=""
                           src={cat.imgSrc}
